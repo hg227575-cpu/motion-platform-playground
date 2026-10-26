@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ExchangeRouteImport } from './routes/exchange'
+import { Route as InvestmentLoansRouteImport } from './routes/investment-loans'
+import { Route as TradingPlatformsRouteImport } from './routes/trading-platforms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExchangeRoute = ExchangeRouteImport.update({
+  id: '/exchange',
+  path: '/exchange',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentLoansRoute = InvestmentLoansRouteImport.update({
+  id: '/investment-loans',
+  path: '/investment-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TradingPlatformsRoute = TradingPlatformsRouteImport.update({
+  id: '/trading-platforms',
+  path: '/trading-platforms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
+  '/investment-loans': typeof InvestmentLoansRoute
+  '/trading-platforms': typeof TradingPlatformsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
+  '/investment-loans': typeof InvestmentLoansRoute
+  '/trading-platforms': typeof TradingPlatformsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
+  '/investment-loans': typeof InvestmentLoansRoute
+  '/trading-platforms': typeof TradingPlatformsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/exchange'
+    | '/investment-loans'
+    | '/trading-platforms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/exchange'
+    | '/investment-loans'
+    | '/trading-platforms'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/exchange'
+    | '/investment-loans'
+    | '/trading-platforms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  ExchangeRoute: typeof ExchangeRoute
+  InvestmentLoansRoute: typeof InvestmentLoansRoute
+  TradingPlatformsRoute: typeof TradingPlatformsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exchange': {
+      id: '/exchange'
+      path: '/exchange'
+      fullPath: '/exchange'
+      preLoaderRoute: typeof ExchangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment-loans': {
+      id: '/investment-loans'
+      path: '/investment-loans'
+      fullPath: '/investment-loans'
+      preLoaderRoute: typeof InvestmentLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trading-platforms': {
+      id: '/trading-platforms'
+      path: '/trading-platforms'
+      fullPath: '/trading-platforms'
+      preLoaderRoute: typeof TradingPlatformsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  ExchangeRoute: ExchangeRoute,
+  InvestmentLoansRoute: InvestmentLoansRoute,
+  TradingPlatformsRoute: TradingPlatformsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
