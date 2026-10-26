@@ -33,7 +33,7 @@ export function Header() {
         )}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link to="/" aria-label={`${site_home} home`} className="shrink-0">
+          <Link to="/" aria-label="Meridian Capital home" className="shrink-0">
             <Logo />
           </Link>
 
